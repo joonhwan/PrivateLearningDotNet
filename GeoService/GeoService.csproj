@@ -45,6 +45,9 @@
     <Compile Include="GeoSerivceProxy.cs" />
     <Compile Include="GeoServiceManager.cs" />
     <Compile Include="IGeoService.cs" />
+    <Compile Include="OperationReportInspector.cs" />
+    <Compile Include="OperationReportOperationBehavior.cs" />
+    <Compile Include="OperationReportServiceBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZipCode.cs" />
   </ItemGroup>
