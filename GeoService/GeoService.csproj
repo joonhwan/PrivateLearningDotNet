@@ -46,6 +46,7 @@
     <Compile Include="GeoSerivceProxy.cs" />
     <Compile Include="GeoServiceManager.cs" />
     <Compile Include="IGeoService.cs" />
+    <Compile Include="OperationInformationEventArgs.cs" />
     <Compile Include="OperationReportInspector.cs" />
     <Compile Include="OperationReportOperationBehaviorAttribute.cs" />
     <Compile Include="OperationReportServiceBehaviorAttribute.cs" />

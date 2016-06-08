@@ -11,6 +11,8 @@ namespace GeoService
     {
         public bool Enabled { get; private set; }
 
+        public event EventHandler<OperationInformationEventArgs> ServiceOperationCalled;
+
         public OperationReportServiceBehaviorAttribute(bool enabled)
         {
             Enabled = enabled;
@@ -30,6 +32,10 @@ namespace GeoService
                     foreach (var operation in endpoint.Contract.Operations)
                     {
                         var operationBehavior = new OperationReportOperationBehaviorAttribute(Enabled);
+                        operationBehavior.ServiceOperationCalled += (sender, args) =>
+                        {
+                            OnServiceOperationCalled(args);
+                        };
                         operation.OperationBehaviors.Add(operationBehavior);
                     }
                 }
@@ -39,6 +45,12 @@ namespace GeoService
         public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
         {
 
+        }
+
+        protected virtual void OnServiceOperationCalled(OperationInformationEventArgs e)
+        {
+            var handler = ServiceOperationCalled;
+            if (handler != null) handler(this, e);
         }
     }
 }

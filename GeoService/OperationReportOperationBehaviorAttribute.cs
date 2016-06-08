@@ -10,6 +10,8 @@ namespace GeoService
     {
         public bool Enabled { get; private set; }
 
+        public event EventHandler<OperationInformationEventArgs> ServiceOperationCalled;
+
         public OperationReportOperationBehaviorAttribute(bool enabled)
         {
             Enabled = enabled;
@@ -26,6 +28,11 @@ namespace GeoService
                 var methodName = operationDescription.Name;
                 var serviceName = dispatchOperation.Parent.Type.Name;
                 var inspector = new OperationReportInspector(serviceName);
+
+                inspector.ServiceOperationCalled += (sender, args) =>
+                {
+                    OnServiceOperationCalled(args);
+                };
                 dispatchOperation.ParameterInspectors.Add(inspector);
             }
         }
@@ -38,6 +45,12 @@ namespace GeoService
         public void AddBindingParameters(OperationDescription operationDescription, BindingParameterCollection bindingParameters)
         {
 
+        }
+
+        protected virtual void OnServiceOperationCalled(OperationInformationEventArgs e)
+        {
+            var handler = ServiceOperationCalled;
+            if (handler != null) handler(this, e);
         }
     }
 }
