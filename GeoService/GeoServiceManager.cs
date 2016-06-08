@@ -10,12 +10,9 @@ using System.ServiceModel.Dispatcher;
 namespace GeoService
 {
     [ServiceBehavior()]
+    //[OperationReportServiceBehavior]
     public class GeoServiceManager : IGeoService
     {
-        public GeoServiceManager()
-        {
-        }
-
         public GeoInfo GetGeoInfoByZipCode(int zipCode)
         {
             return new GeoInfo()
@@ -24,6 +21,7 @@ namespace GeoService
             };
         }
 
+        [OperationReportOperationBehavior(true)]
         public List<ZipCode> GetZipCodes()
         {
             return new List<ZipCode>

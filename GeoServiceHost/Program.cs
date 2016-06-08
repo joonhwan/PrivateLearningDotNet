@@ -14,8 +14,8 @@ namespace GeoServiceHost
         {
             var host = new ServiceHost(typeof(GeoService.GeoServiceManager));
 
-            var behavior = new OperationReportServiceBehavior();
-            host.Description.Behaviors.Add(behavior);
+            //var behavior = new OperationReportServiceBehavior();
+            //host.Description.Behaviors.Add(behavior);
 
             host.Open();
 

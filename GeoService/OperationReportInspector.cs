@@ -8,9 +8,9 @@ namespace GeoService
     {
         private readonly string _serviceName;
 
-        public OperationReportInspector(ServiceDescription serviceDescription)
+        public OperationReportInspector(string serviceName)
         {
-            _serviceName = serviceDescription.Name;
+            _serviceName = serviceName;
         }
 
         public object BeforeCall(string operationName, object[] inputs)

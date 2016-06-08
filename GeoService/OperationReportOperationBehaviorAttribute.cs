@@ -1,16 +1,18 @@
+using System;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
 namespace GeoService
 {
-    public class OperationReportOperationBehavior : IOperationBehavior
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property)]
+    public class OperationReportOperationBehaviorAttribute : Attribute, IOperationBehavior
     {
-        private OperationReportInspector _inspector;
+        public bool Enabled { get; private set; }
 
-        public OperationReportOperationBehavior(ServiceDescription serviceDescription)
+        public OperationReportOperationBehaviorAttribute(bool enabled)
         {
-            _inspector = new OperationReportInspector(serviceDescription);
+            Enabled = enabled;
         }
 
         public void Validate(OperationDescription operationDescription)
@@ -19,8 +21,13 @@ namespace GeoService
 
         public void ApplyDispatchBehavior(OperationDescription operationDescription, DispatchOperation dispatchOperation)
         {
-            var methodName = operationDescription.Name;
-            dispatchOperation.ParameterInspectors.Add(_inspector);
+            if (Enabled)
+            {
+                var methodName = operationDescription.Name;
+                var serviceName = dispatchOperation.Parent.Type.Name;
+                var inspector = new OperationReportInspector(serviceName);
+                dispatchOperation.ParameterInspectors.Add(inspector);
+            }
         }
 
         public void ApplyClientBehavior(OperationDescription operationDescription, ClientOperation clientOperation)
