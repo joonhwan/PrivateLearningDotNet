@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using GeoService;
 
-namespace GeoServiceClient
+namespace GeoService
 {
     public class GeoSerivceProxy : ClientBase<IGeoService>, IGeoService
     {

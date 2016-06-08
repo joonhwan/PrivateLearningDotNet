@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoInfo.cs" />
-    <Compile Include="GeoService.cs" />
+    <Compile Include="GeoSerivceProxy.cs" />
+    <Compile Include="GeoServiceManager.cs" />
     <Compile Include="IGeoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZipCode.cs" />

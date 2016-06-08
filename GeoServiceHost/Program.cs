@@ -11,7 +11,7 @@ namespace GeoServiceHost
     {
         static void Main(string[] args)
         {
-            var host = new ServiceHost(typeof(GeoService.GeoService));
+            var host = new ServiceHost(typeof(GeoService.GeoServiceManager));
             host.Open();
 
             Console.WriteLine("Running Host...press any key to exit.");
