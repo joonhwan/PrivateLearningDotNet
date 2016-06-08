@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -21,7 +20,7 @@ namespace GeoService
             };
         }
 
-        [OperationReportOperationBehavior(true)]
+        //[OperationReportOperationBehavior(true)]
         public List<ZipCode> GetZipCodes()
         {
             return new List<ZipCode>
@@ -34,6 +33,5 @@ namespace GeoService
                 new ZipCode{ Code = 6, State = "Busan" },
             };
         }
-
     }
 }
