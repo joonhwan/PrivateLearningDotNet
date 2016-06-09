@@ -20,13 +20,14 @@ namespace FaultReport.Service
 
                 Console.WriteLine("Exiting  OneWayManager");
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
                 var callback = OperationContext.Current.GetCallbackChannel<IOneWayExceptionCallback>();
                 if(callback!=null)
                 {
                     // 그냥 ex를 전달하면 serialization 오류가 발생하는 데 왜 그런지 알 수가 없다.
-                    callback.ReportError(new ArgumentException(ex.Message));
+                    //callback.ReportError(new ArgumentException(ex.Message));
+                    callback.ReportError(ex);
                 }
                 //throw;
             }

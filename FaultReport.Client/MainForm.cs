@@ -43,7 +43,7 @@ namespace FaultReport.Client
             }
         }
 
-        public void ReportError(ArgumentException ex)
+        public void ReportError(Exception ex)
         {
             try
             {

@@ -8,6 +8,6 @@ namespace FaultReport.Service
     {
         [OperationContract]
         [ServiceKnownType(typeof(ArgumentException))]
-        void ReportError(ArgumentException ex);
+        void ReportError(Exception ex);
     }
 }
