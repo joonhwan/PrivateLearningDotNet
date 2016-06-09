@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,10 +31,16 @@ namespace FaultReport.Client
         private void makeCallButton_Click(object sender, EventArgs e)
         {
             messageLabel.Text = "";
-
-            _service.TestOperation();
-
-            messageLabel.Text = "DONE";
+            try
+            {
+                _service.TestOperation();
+                messageLabel.Text = "DONE";
+            }
+            catch (FaultException<ArgumentException> ex)
+            {
+                MessageBox.Show("Exception is caught!");
+                messageLabel.Text = "";
+            }
         }
     }
 }
