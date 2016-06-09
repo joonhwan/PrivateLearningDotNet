@@ -13,16 +13,27 @@ namespace SCP.Client
 {
     public partial class MainForm : Form
     {
+        private LongRunningClient _service;
+
         public MainForm()
         {
             InitializeComponent();
+            _service = new LongRunningClient();
+
+            Closing += (sender, args) =>
+            {
+                //_service.Close(); 
+                _service.Abort();
+            };
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            var service = new LongRunningClient();
-            service.StartProcess();
-            service.Close(); // StartProcess()가 isOneWay이더라도, Close()는 이전 StartProcess()의 수행이 끝나기 전까지 lock.
+            //var service = new LongRunningClient();
+            //service.StartProcess();
+            //service.Close(); // StartProcess()가 isOneWay이더라도, Close()는 이전 StartProcess()의 수행이 끝나기 전까지 lock.
+
+            _service.StartProcess();
         }
     }
 }
