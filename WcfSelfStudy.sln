@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRoutingCbr.Client", "Wcf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRoutingCbr.ConsoleHost2", "WcfRoutingCbr.ConsoleHost2\WcfRoutingCbr.ConsoleHost2.csproj", "{7C1FF61F-4539-40BE-ADC3-1B46BC2EF2EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfRoutingCbr.ConsoleHost_Backup", "WcfRoutingCbr.ConsoleHost_Backup\WcfRoutingCbr.ConsoleHost_Backup.csproj", "{2D30154A-D26D-4325-BDE9-B3271D4A197B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{7C1FF61F-4539-40BE-ADC3-1B46BC2EF2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C1FF61F-4539-40BE-ADC3-1B46BC2EF2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C1FF61F-4539-40BE-ADC3-1B46BC2EF2EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D30154A-D26D-4325-BDE9-B3271D4A197B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D30154A-D26D-4325-BDE9-B3271D4A197B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D30154A-D26D-4325-BDE9-B3271D4A197B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D30154A-D26D-4325-BDE9-B3271D4A197B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,5 +140,6 @@ Global
 		{5095C3C9-F223-4AF2-BD09-6073C0BA62E1} = {F3C2D800-EB53-4078-AD5A-14B24DC35695}
 		{BBCDF661-7C7B-4B5E-9542-291817AA0686} = {F3C2D800-EB53-4078-AD5A-14B24DC35695}
 		{7C1FF61F-4539-40BE-ADC3-1B46BC2EF2EA} = {F3C2D800-EB53-4078-AD5A-14B24DC35695}
+		{2D30154A-D26D-4325-BDE9-B3271D4A197B} = {F3C2D800-EB53-4078-AD5A-14B24DC35695}
 	EndGlobalSection
 EndGlobal
