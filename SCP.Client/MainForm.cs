@@ -15,6 +15,7 @@ namespace SCP.Client
     public partial class MainForm : Form, ILongRunningCallback
     {
         private readonly LongRunningDuplexClient _service;
+        private bool _isCancelled;
 
         public MainForm()
         {
@@ -30,6 +31,8 @@ namespace SCP.Client
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            _isCancelled = false;
+
             //var service = new LongRunningClient();
             //service.StartProcess();
             //service.Close(); // StartProcess()가 isOneWay이더라도, Close()는 이전 StartProcess()의 수행이 끝나기 전까지 lock.
@@ -40,7 +43,13 @@ namespace SCP.Client
         public bool ReportNumber(int number)
         {
             logTextBox.AppendText(string.Format("{0} {1}{2}", DateTime.Now.ToString("u"), number, Environment.NewLine));
-            return false; // keep going! 을 의미.
+            //return false; // keep going! 을 의미.
+            return _isCancelled;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            _isCancelled = true;
         }
     }
 }

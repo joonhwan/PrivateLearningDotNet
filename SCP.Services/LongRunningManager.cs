@@ -21,6 +21,9 @@ namespace SCP.Services
             var random = new Random();
 
             var isCancelled = false;
+            var operationContext = OperationContext.Current;
+            var callback = operationContext.GetCallbackChannel<ILongRunningCallback>();
+
             for(var i=0; i<100; ++i)
             {
                 var gen = random.Next();
@@ -28,15 +31,22 @@ namespace SCP.Services
 
                 _numbers.Add(gen);
 
-                var callback = OperationContext.Current.GetCallbackChannel<ILongRunningCallback>();
                 if(callback != null)
                 {
-                    isCancelled = callback.ReportNumber(gen);
+                    try
+                    {
+                        isCancelled = callback.ReportNumber(gen);
+                    }
+                    catch (CommunicationException)
+                    {
+                        // 클라이언트 종료 되면 예외발생한다. 
+                        isCancelled = true;
+                    }
                 }
-                //if (isCancelled)
-                //{
-                //    break;
-                //}
+                if (isCancelled)
+                {
+                    break;
+                }
                 Thread.Sleep(3000);
             }
         }

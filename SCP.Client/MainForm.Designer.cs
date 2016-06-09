@@ -30,6 +30,7 @@
         {
             this.startButton = new System.Windows.Forms.Button();
             this.logTextBox = new System.Windows.Forms.TextBox();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // startButton
@@ -54,11 +55,22 @@
             this.logTextBox.Size = new System.Drawing.Size(358, 109);
             this.logTextBox.TabIndex = 1;
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(121, 13);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(89, 23);
+            this.cancelButton.TabIndex = 2;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 164);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.startButton);
             this.Name = "MainForm";
@@ -72,6 +84,7 @@
 
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.TextBox logTextBox;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
 
