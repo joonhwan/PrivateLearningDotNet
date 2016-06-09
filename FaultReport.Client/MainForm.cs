@@ -12,7 +12,7 @@ using FaultReport.Service;
 
 namespace FaultReport.Client
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IOneWayExceptionCallback
     {
         private OneWayClient _service;
 
@@ -20,7 +20,7 @@ namespace FaultReport.Client
         {
             InitializeComponent();
 
-            _service = new OneWayClient();
+            _service = new OneWayClient(this);
 
             Closing += (sender, args) =>
             {
@@ -41,6 +41,12 @@ namespace FaultReport.Client
                 MessageBox.Show("Exception is caught!");
                 messageLabel.Text = "";
             }
+        }
+
+        public void ReportError(Exception ex)
+        {
+            //MessageBox.Show(string.Format("Exception has been caught! : {0]", ex.Message));
+            throw ex;
         }
     }
 }

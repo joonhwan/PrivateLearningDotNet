@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -7,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FaultReport.Service
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IOneWayExceptionCallback))]
     public interface IOneWayService
     {
-        //[OperationContract(IsOneWay = true)]
+        //[OperationContract(IsOneWay = false)]
         //[FaultContract(typeof(ArgumentException))]
 
         [OperationContract(IsOneWay = true)]

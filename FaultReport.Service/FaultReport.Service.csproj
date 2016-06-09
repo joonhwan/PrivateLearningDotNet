@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOneWayExceptionCallback.cs" />
     <Compile Include="IOneWayService.cs" />
     <Compile Include="OneWayClient.cs" />
     <Compile Include="OneWayManager.cs" />

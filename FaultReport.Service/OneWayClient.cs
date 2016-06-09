@@ -2,9 +2,10 @@
 
 namespace FaultReport.Service
 {
-    public class OneWayClient : ClientBase<IOneWayService>, IOneWayService
+    public class OneWayClient : DuplexClientBase<IOneWayService>, IOneWayService
     {
-        public OneWayClient()
+        public OneWayClient(IOneWayExceptionCallback sink)
+            : base(new InstanceContext(sink))
         {
             
         }
