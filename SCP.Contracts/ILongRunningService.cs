@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SCP.Contracts
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(ILongRunningCallback))]
     public interface ILongRunningService
     {
         [OperationContract(IsOneWay = true)]

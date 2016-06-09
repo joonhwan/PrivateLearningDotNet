@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILongRunningCallback.cs" />
     <Compile Include="ILongRunningService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
