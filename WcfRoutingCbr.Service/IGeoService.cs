@@ -12,5 +12,8 @@ namespace WcfRoutingCbr.Service
     {
         [OperationContract]
         string GetStateNameByZipCode(int zipCode);
+
+        [OperationContract(IsOneWay = true, Action = "http://anyurlyouwant/geoservice/broadcast")]
+        void Broadcast(string message);
     }
 }

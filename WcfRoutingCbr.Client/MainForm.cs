@@ -32,5 +32,18 @@ namespace WcfRoutingCbr.Client
                 stateLabel.Text = ex.Message;
             }
         }
+
+        private void broadcastButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var service = new GeoClient("GeoServiceMulticast");
+                service.Broadcast(broadcastMessageTextBox.Text);
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
     }
 }

@@ -31,6 +31,8 @@
             this.zipCodeTextBox = new System.Windows.Forms.TextBox();
             this.getButton = new System.Windows.Forms.Button();
             this.stateLabel = new System.Windows.Forms.Label();
+            this.broadcastButton = new System.Windows.Forms.Button();
+            this.broadcastMessageTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // zipCodeTextBox
@@ -59,13 +61,32 @@
             this.stateLabel.TabIndex = 2;
             this.stateLabel.Text = "STATE:??";
             // 
+            // broadcastButton
+            // 
+            this.broadcastButton.Location = new System.Drawing.Point(120, 71);
+            this.broadcastButton.Name = "broadcastButton";
+            this.broadcastButton.Size = new System.Drawing.Size(75, 23);
+            this.broadcastButton.TabIndex = 3;
+            this.broadcastButton.Text = "Broadcast!";
+            this.broadcastButton.UseVisualStyleBackColor = true;
+            this.broadcastButton.Click += new System.EventHandler(this.broadcastButton_Click);
+            // 
+            // broadcastMessageTextBox
+            // 
+            this.broadcastMessageTextBox.Location = new System.Drawing.Point(13, 73);
+            this.broadcastMessageTextBox.Name = "broadcastMessageTextBox";
+            this.broadcastMessageTextBox.Size = new System.Drawing.Size(100, 21);
+            this.broadcastMessageTextBox.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.broadcastButton);
             this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.getButton);
+            this.Controls.Add(this.broadcastMessageTextBox);
             this.Controls.Add(this.zipCodeTextBox);
             this.Name = "MainForm";
             this.Text = "RoutingCbr Test";
@@ -79,6 +100,8 @@
         private System.Windows.Forms.TextBox zipCodeTextBox;
         private System.Windows.Forms.Button getButton;
         private System.Windows.Forms.Label stateLabel;
+        private System.Windows.Forms.Button broadcastButton;
+        private System.Windows.Forms.TextBox broadcastMessageTextBox;
     }
 }
 

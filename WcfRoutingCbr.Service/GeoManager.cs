@@ -11,6 +11,11 @@ namespace WcfRoutingCbr.Service
             Console.WriteLine("GeoManager1 : GetStateNameByZipCode({0}) : ", zipCode);
             return string.Format("STATE{0}", zipCode);
         }
+
+        public void Broadcast(string message)
+        {
+            Console.WriteLine("broadcated: {0}", message);
+        }
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
@@ -20,6 +25,11 @@ namespace WcfRoutingCbr.Service
         {
             Console.WriteLine("GeoManager2 : GetStateNameByZipCode({0}) : ", zipCode);
             return string.Format("BIGSTATE{0}", zipCode);
+        }
+
+        public void Broadcast(string message)
+        {
+            Console.WriteLine("broadcated: {0}", message);
         }
     }
 }
