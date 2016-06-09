@@ -9,8 +9,7 @@ using System.Threading;
 
 namespace GeoService
 {
-    [ServiceBehavior]
-    [ArgumentExceptionHandler]
+    //[ArgumentExceptionHandler]
     //[OperationReportServiceBehavior]
     public class GeoServiceManager : IGeoService, IServiceBehavior
     {
