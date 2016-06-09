@@ -7,6 +7,7 @@ namespace FaultReport.Service
     public interface IOneWayExceptionCallback
     {
         [OperationContract]
-        void ReportError(Exception ex);
+        [ServiceKnownType(typeof(ArgumentException))]
+        void ReportError(ArgumentException ex);
     }
 }

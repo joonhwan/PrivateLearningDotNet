@@ -43,10 +43,16 @@ namespace FaultReport.Client
             }
         }
 
-        public void ReportError(Exception ex)
+        public void ReportError(ArgumentException ex)
         {
-            //MessageBox.Show(string.Format("Exception has been caught! : {0]", ex.Message));
-            throw ex;
+            try
+            {
+                throw ex;
+            }
+            catch (Exception ex2)
+            {
+                MessageBox.Show(string.Format("Exception has been caught! : {0}", ex2.Message));
+            }
         }
     }
 }
