@@ -10,6 +10,12 @@ namespace SCP.Contracts
     [ServiceContract(CallbackContract = typeof(ILongRunningCallback))]
     public interface ILongRunningService
     {
+        [OperationContract]
+        void Connect();
+
+        [OperationContract]
+        void Disconnect();
+
         [OperationContract(IsOneWay = true)]
         void StartProcess();
     }

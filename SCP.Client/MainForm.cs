@@ -22,10 +22,17 @@ namespace SCP.Client
             InitializeComponent();
             _service = new LongRunningDuplexClient(this);
 
+            Load += (sender, args) =>
+            {
+                _service.Connect();
+            };
+
             Closing += (sender, args) =>
             {
                 //_service.Close(); 
-                _service.Abort();
+                _service.Disconnect();
+
+                _service.Close();
             };
         }
 

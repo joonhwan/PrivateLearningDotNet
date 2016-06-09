@@ -10,13 +10,13 @@ using SCP.Contracts;
 
 namespace SCP.Proxies
 {
-    public class LongRunningClient : ClientBase<ILongRunningService>, ILongRunningService
-    {
-        public void StartProcess()
-        {
-            base.Channel.StartProcess();
-        }
-    }
+    //public class LongRunningClient : ClientBase<ILongRunningService>, ILongRunningService
+    //{
+    //    public void StartProcess()
+    //    {
+    //        base.Channel.StartProcess();
+    //    }
+    //}
 
     public class LongRunningDuplexClient : DuplexClientBase<ILongRunningService>, ILongRunningService
     {
@@ -24,6 +24,16 @@ namespace SCP.Proxies
             : base(new InstanceContext(sink))
         {
 
+        }
+
+        public void Connect()
+        {
+            Channel.Connect();
+        }
+
+        public void Disconnect()
+        {
+            Channel.Disconnect();
         }
 
         public void StartProcess()

@@ -1,54 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ServiceModel;
-using System.Threading;
 using SCP.Contracts;
 
 namespace SCP.Services
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
+    //[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)] //--> 이걸 계속 쓰려면 lock 필요
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class LongRunningManager : ILongRunningService
     {
-        private List<int> _numbers;
+        private static readonly Dictionary<string, RandomNumberGeneratingJob> Jobs = new Dictionary<string, RandomNumberGeneratingJob>();
 
         public LongRunningManager()
         {
-            _numbers = new List<int>();
+        }
+
+        public void Connect()
+        {
+            var session = OperationContext.Current.SessionId;
+            if (session == null)
+            {
+                return;
+            }
+
+            var callback = OperationContext.Current.GetCallbackChannel<ILongRunningCallback>();
+            
+            var job = new RandomNumberGeneratingJob(callback);
+            var channel = OperationContext.Current.Channel;
+            channel.Closed += (sender, args) =>
+            {
+                job.Stop();
+            };
+            Jobs[session] = job;
+            
+        }
+
+        public void Disconnect()
+        {
+            var session = OperationContext.Current.SessionId;
+            if (session == null)
+                return;
+
+            RandomNumberGeneratingJob job;
+            if(Jobs.TryGetValue(session, out job))
+            {
+                job.Stop();
+                Jobs.Remove(session);
+            }
         }
 
         public void StartProcess()
         {
-            var random = new Random();
-
-            var isCancelled = false;
-            var operationContext = OperationContext.Current;
-            var callback = operationContext.GetCallbackChannel<ILongRunningCallback>();
-
-            for(var i=0; i<100; ++i)
+            var sessionId = OperationContext.Current.SessionId;
+            if(sessionId == null)
             {
-                var gen = random.Next();
-                Console.WriteLine("Generated {0}", gen);
+                return;
+            }
 
-                _numbers.Add(gen);
-
-                if(callback != null)
-                {
-                    try
-                    {
-                        isCancelled = callback.ReportNumber(gen);
-                    }
-                    catch (CommunicationException)
-                    {
-                        // 클라이언트 종료 되면 예외발생한다. 
-                        isCancelled = true;
-                    }
-                }
-                if (isCancelled)
-                {
-                    break;
-                }
-                Thread.Sleep(3000);
+            RandomNumberGeneratingJob job;
+            if(Jobs.TryGetValue(sessionId, out job))
+            {
+                job.Start();
             }
         }
     }
+
+    
 }
