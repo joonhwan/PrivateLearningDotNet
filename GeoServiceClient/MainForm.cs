@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,10 +42,23 @@ namespace GeoServiceClient
             var selectedItem = zipCodeComboBox.SelectedItem as ComboItem;
             if(selectedItem == null)
                 return;
-            using (var service = new GeoSerivceProxy())
+
+            try
             {
-                var info = service.GetGeoInfoByZipCode(selectedItem.ZipCode.Code);
-                InfoTextBox.Text = info.ToString();
+                using (var service = new GeoSerivceProxy())
+                {
+                    var info = service.GetGeoInfoByZipCode(selectedItem.ZipCode.Code);
+                    InfoTextBox.Text = info.ToString();
+                }
+            }
+            catch (FaultException<ArgumentException> argex)
+            {
+                MessageBox.Show("ArgumentException was caught.");
+                //throw;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(string.Format("Exception : {0}", ex));
             }
         }
     }

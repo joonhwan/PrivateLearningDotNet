@@ -11,6 +11,7 @@ namespace GeoService
     public interface IGeoService
     {
         [OperationContract]
+        [FaultContract(typeof(ArgumentException))]
         GeoInfo GetGeoInfoByZipCode(int zipCode);
         [OperationContract]
         List<ZipCode> GetZipCodes();
