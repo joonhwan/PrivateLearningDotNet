@@ -9,12 +9,12 @@ using System.ServiceModel.Dispatcher;
 
 namespace WcfCors
 {
+    // http://therealmofcode.com/posts/2015/05/wcf-enabling-cors.html
+    // https://github.com/zminic/wcf-cors-support
     class CorsEnabledEndpointBehavior : BehaviorExtensionElement, IEndpointBehavior, ICorsConfigurationProvider
     {
         public CorsEnabledEndpointBehavior()
         {
-            // https://github.com/zminic/wcf-cors-support/tree/master/SampleAjaxService
-            // https://github.com/zminic/wcf-cors-support/blob/master/SampleAjaxService/App.config
             //var config = ConfigurationManager.GetSection("customSettings") as CustomSettings;
 
             //if (config == null)
@@ -56,7 +56,7 @@ namespace WcfCors
             {
                 Filter = "*",
                 AllowCredentials = false,
-                AllowHeaders = "Content-Type",
+                AllowHeaders = "X-Requested-With,Content-Type",
                 AllowMethods = "POST,GET,PUT,DELETE,OPTIONS"
             };
         }
