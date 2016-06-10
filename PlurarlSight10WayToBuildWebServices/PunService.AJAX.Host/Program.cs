@@ -8,7 +8,7 @@ namespace PunService.AJAX.Host
     {
         static void Main(string[] args)
         {
-            var host = new CorsEnabledServiceHost(typeof(PunManager));
+            var host = new ServiceHost(typeof(PunManager));
             foreach(var endpoint in host.Description.Endpoints)
             {
                 Console.WriteLine("Endpoint:{0}({1})", endpoint.Address, endpoint.Contract.ContractType);

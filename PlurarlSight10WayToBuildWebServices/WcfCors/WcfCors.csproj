@@ -43,13 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CorsDomain.cs" />
     <Compile Include="CorsEnabledMessageInspector.cs" />
     <Compile Include="CorsConstants.cs" />
     <Compile Include="CorsEnabledAttribute.cs" />
     <Compile Include="CorsEnabledEndpointBehavior.cs" />
-    <Compile Include="CorsEnabledServiceHostFactory.cs" />
-    <Compile Include="PreflightOperationBehavior.cs" />
-    <Compile Include="PreflightOperationInvoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
@@ -9,49 +12,71 @@ using System.Threading.Tasks;
 
 namespace WcfCors
 {
+    public class CorsConfiguration
+    {
+        protected CorsConfiguration()
+        {
+        }
+
+        public static CorsConfiguration Instance = new CorsConfiguration();
+    }
+
+    public interface ICorsConfigurationProvider
+    {
+        CorsDomain FindByDomainName(string origin);
+    }
+
     class CorsEnabledMessageInspector : IDispatchMessageInspector
     {
-        private readonly List<string> _corsEnabledOperationNames;
+        private ICorsConfigurationProvider _corsConfigurationProvider;
 
-        public CorsEnabledMessageInspector(List<OperationDescription> corsEnabledOperations)
+        public CorsEnabledMessageInspector(ICorsConfigurationProvider corsConfigurationProvider)
         {
-            this._corsEnabledOperationNames = corsEnabledOperations.Select(o => o.Name).ToList();
+            _corsConfigurationProvider = corsConfigurationProvider;
         }
 
         public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
         {
-            HttpRequestMessageProperty httpProp = (HttpRequestMessageProperty)request.Properties[HttpRequestMessageProperty.Name];
-            object operationName;
-            request.Properties.TryGetValue(WebHttpDispatchOperationSelector.HttpOperationNamePropertyName, out operationName);
-            if (httpProp != null && operationName != null && this._corsEnabledOperationNames.Contains((string)operationName))
-            {
-                string origin = httpProp.Headers[CorsConstants.Origin];
-                if (origin != null)
-                {
-                    return origin;
-                }
-            }
+            var httpRequest = (HttpRequestMessageProperty)request.Properties[HttpRequestMessageProperty.Name];
 
-            return null;
+            return new
+            {
+                origin = httpRequest.Headers["Origin"],
+                handlePreflight = httpRequest.Method.Equals("OPTIONS", StringComparison.InvariantCultureIgnoreCase)
+            };
         }
 
         public void BeforeSendReply(ref Message reply, object correlationState)
         {
-            string origin = correlationState as string;
-            if (origin != null)
+            var state = (dynamic)correlationState;
+
+            CorsDomain domain = _corsConfigurationProvider.FindByDomainName(state.origin);
+            if (domain != null)
             {
-                HttpResponseMessageProperty httpProp = null;
-                if (reply.Properties.ContainsKey(HttpResponseMessageProperty.Name))
+                // handle request preflight
+                if (state.handlePreflight)
                 {
-                    httpProp = (HttpResponseMessageProperty)reply.Properties[HttpResponseMessageProperty.Name];
-                }
-                else
-                {
-                    httpProp = new HttpResponseMessageProperty();
-                    reply.Properties.Add(HttpResponseMessageProperty.Name, httpProp);
+                    reply = Message.CreateMessage(MessageVersion.None, "PreflightReturn");
+
+                    var httpResponse = new HttpResponseMessageProperty();
+                    reply.Properties.Add(HttpResponseMessageProperty.Name, httpResponse);
+
+                    httpResponse.SuppressEntityBody = true;
+                    httpResponse.StatusCode = HttpStatusCode.OK;
                 }
 
-                httpProp.Headers.Add(CorsConstants.AccessControlAllowOrigin, origin);
+                // add allowed origin info
+                var response = (HttpResponseMessageProperty)reply.Properties[HttpResponseMessageProperty.Name];
+                response.Headers.Add("Access-Control-Allow-Origin", state.origin);
+
+                if (!string.IsNullOrEmpty(domain.AllowMethods))
+                    response.Headers.Add("Access-Control-Allow-Methods", domain.AllowMethods);
+
+                if (!string.IsNullOrEmpty(domain.AllowHeaders))
+                    response.Headers.Add("Access-Control-Allow-Headers", domain.AllowHeaders);
+
+                if (domain.AllowCredentials)
+                    response.Headers.Add("Access-Control-Allow-Credentials", "true");
             }
         }
     }

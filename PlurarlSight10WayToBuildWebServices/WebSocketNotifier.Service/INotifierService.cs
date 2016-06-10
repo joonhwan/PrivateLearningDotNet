@@ -6,7 +6,7 @@ namespace WebSocketNotifier.Service
     [ServiceContract]
     public interface INotifierService
     {
-        [OperationContract(IsOn]
+        [OperationContract]
         void Notify(Message msg);
     }
 }
