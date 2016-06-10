@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WcfAjaxWebServices", "WcfAjaxWebServices", "{B4AA57C2-7EFA-4742-BFB3-C493CA4F34D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PunService.AJAX", "PunService.AJAX\PunService.AJAX.csproj", "{E23A38F5-5128-49A9-B080-0D407C72BBCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PunService.AJAX.Host", "PunService.AJAX.Host\PunService.AJAX.Host.csproj", "{1D067B02-F110-4C42-9716-ED7462299A00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PunService.AJAX.WinFormClient", "PunService.AJAX.WinFormClient\PunService.AJAX.WinFormClient.csproj", "{3335CFDB-D0A9-4F95-B3F6-F1E8935760F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SelfHostedWebSocketServiceWithJsClient", "SelfHostedWebSocketServiceWithJsClient", "{225AB723-CF65-4EDD-AA87-88A78F8B0444}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketNotifier.Service", "WebSocketNotifier.Service\WebSocketNotifier.Service.csproj", "{0022E11F-DA3D-4BB8-B5E1-0C7179F6BEDC}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PunService.AJAX.WebClient", "http://localhost:56820", "{FD714AD6-1357-4568-9650-2567FCF886FF}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_56820"
+		Debug.AspNetCompiler.PhysicalPath = "PunService.AJAX.WebClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56820\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_56820"
+		Release.AspNetCompiler.PhysicalPath = "PunService.AJAX.WebClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56820\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "PunService.AJAX.WebClient\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfCors", "WcfCors\WcfCors.csproj", "{05DC0226-9E03-49D1-97F6-35757AC6EA83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E23A38F5-5128-49A9-B080-0D407C72BBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E23A38F5-5128-49A9-B080-0D407C72BBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E23A38F5-5128-49A9-B080-0D407C72BBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E23A38F5-5128-49A9-B080-0D407C72BBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D067B02-F110-4C42-9716-ED7462299A00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D067B02-F110-4C42-9716-ED7462299A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D067B02-F110-4C42-9716-ED7462299A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D067B02-F110-4C42-9716-ED7462299A00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3335CFDB-D0A9-4F95-B3F6-F1E8935760F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3335CFDB-D0A9-4F95-B3F6-F1E8935760F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3335CFDB-D0A9-4F95-B3F6-F1E8935760F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3335CFDB-D0A9-4F95-B3F6-F1E8935760F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0022E11F-DA3D-4BB8-B5E1-0C7179F6BEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0022E11F-DA3D-4BB8-B5E1-0C7179F6BEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0022E11F-DA3D-4BB8-B5E1-0C7179F6BEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0022E11F-DA3D-4BB8-B5E1-0C7179F6BEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD714AD6-1357-4568-9650-2567FCF886FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD714AD6-1357-4568-9650-2567FCF886FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD714AD6-1357-4568-9650-2567FCF886FF}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD714AD6-1357-4568-9650-2567FCF886FF}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{05DC0226-9E03-49D1-97F6-35757AC6EA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DC0226-9E03-49D1-97F6-35757AC6EA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DC0226-9E03-49D1-97F6-35757AC6EA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DC0226-9E03-49D1-97F6-35757AC6EA83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E23A38F5-5128-49A9-B080-0D407C72BBCE} = {B4AA57C2-7EFA-4742-BFB3-C493CA4F34D5}
+		{1D067B02-F110-4C42-9716-ED7462299A00} = {B4AA57C2-7EFA-4742-BFB3-C493CA4F34D5}
+		{3335CFDB-D0A9-4F95-B3F6-F1E8935760F1} = {B4AA57C2-7EFA-4742-BFB3-C493CA4F34D5}
+		{0022E11F-DA3D-4BB8-B5E1-0C7179F6BEDC} = {225AB723-CF65-4EDD-AA87-88A78F8B0444}
+		{FD714AD6-1357-4568-9650-2567FCF886FF} = {B4AA57C2-7EFA-4742-BFB3-C493CA4F34D5}
+	EndGlobalSection
+EndGlobal
