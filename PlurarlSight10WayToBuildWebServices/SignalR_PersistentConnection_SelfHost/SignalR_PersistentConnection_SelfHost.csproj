@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F529245-7D0D-4F38-95AD-A7C2A0BDBF67}</ProjectGuid>
+    <ProjectGuid>{C795570A-2426-4D79-9932-9DD60EA8ABC2}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SignalRSelfHost</RootNamespace>
-    <AssemblyName>SignalRSelfHost</AssemblyName>
+    <RootNamespace>SignalR_PersistentConnection_SelfHost</RootNamespace>
+    <AssemblyName>SignalR_PersistentConnection_SelfHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -88,12 +88,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SignalRMyHub\SignalRMyHub.csproj">
-      <Project>{B90E9BB4-B0B3-436A-937D-F780C0DB52A8}</Project>
-      <Name>SignalRMyHub</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
