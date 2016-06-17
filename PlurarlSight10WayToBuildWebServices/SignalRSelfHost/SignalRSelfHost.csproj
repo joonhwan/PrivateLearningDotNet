@@ -117,44 +117,6 @@
     <None Include="packages.config" />
     <None Include="tsconfig.json" />
     <None Include="tsd.json" />
-    <None Include="Views\etc\font-awesome%404.6.3\.jspm-hash" />
-    <None Include="Views\etc\font-awesome%404.6.3\.npmignore" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\css\font-awesome.css.map" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\fonts\fontawesome-webfont.eot" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\fonts\fontawesome-webfont.ttf" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\fonts\fontawesome-webfont.woff" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\fonts\fontawesome-webfont.woff2" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\fonts\FontAwesome.otf" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\animated.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\bordered-pulled.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\core.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\fixed-width.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\font-awesome.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\icons.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\larger.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\list.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\mixins.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\path.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\rotated-flipped.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\screen-reader.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\stacked.less" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\less\variables.less" />
-    <None Include="Views\etc\font-awesome%404.6.3\package.json" />
-    <None Include="Views\etc\font-awesome%404.6.3\README.md" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\font-awesome.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_animated.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_bordered-pulled.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_core.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_fixed-width.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_icons.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_larger.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_list.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_mixins.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_path.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_rotated-flipped.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_screen-reader.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_stacked.scss" />
-    <None Include="Views\etc\font-awesome%404.6.3\scss\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SignalRMyHub\SignalRMyHub.csproj">
@@ -163,10 +125,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\css\font-awesome.css" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\css\font-awesome.min.css" />
-    <EmbeddedResource Include="Views\etc\font-awesome%404.6.3\fonts\fontawesome-webfont.svg" />
-    <Content Include="Views\etc\font-awesome%404.6.3\HELP-US-OUT.txt" />
     <EmbeddedResource Include="app\bundle.js" />
     <EmbeddedResource Include="Views\app\views\home.html" />
     <EmbeddedResource Include="Views\app\views\login.html" />
@@ -179,6 +137,9 @@
     <Content Include="app\views\login.html" />
     <Content Include="app\views\register.html" />
     <EmbeddedResource Include="Views\main.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\etc\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
