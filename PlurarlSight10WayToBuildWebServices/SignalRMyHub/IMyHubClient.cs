@@ -1,7 +1,9 @@
+using Microsoft.AspNet.SignalR.Hubs;
+
 namespace SignalRMyHub
 {
     public interface IMyHubClient
     {
-        void addMessage(string name, string message);
+        void AddMessage(string name, string message);
     }
 }

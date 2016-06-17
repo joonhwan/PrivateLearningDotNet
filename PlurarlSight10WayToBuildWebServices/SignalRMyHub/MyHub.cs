@@ -20,7 +20,7 @@ namespace SignalRMyHub
             // server method에서는 Context 속성으로 현재 호출컨텍스트를 알 수 있다.
 
             // server에서 호출할 수 있는 'Client Method' (클라이언트 javascript에서 정의)
-            Clients.All.addMessage(name, message);
+            Clients.All.AddMessage(name, message);
         }
 
         // 여기서 WCF로 가는 모든 호출을 할 수 있다. 

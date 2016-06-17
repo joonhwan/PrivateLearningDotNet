@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "target": "es5",
+        "noImplicitAny": true,
+        "sourceMap": false,
+        "outDir": "app/dist"
+    },
+    "compileOnSave": true,
+    "exclude": [
+        "node_modules",
+        "jspm_packages",
+        "typings",
+        "app/dist"
+    ]
+}

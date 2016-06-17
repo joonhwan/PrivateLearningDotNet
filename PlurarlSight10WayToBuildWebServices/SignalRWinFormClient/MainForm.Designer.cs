@@ -57,7 +57,7 @@
             this.messageTextBox.Location = new System.Drawing.Point(85, 39);
             this.messageTextBox.Name = "messageTextBox";
             this.messageTextBox.Size = new System.Drawing.Size(119, 21);
-            this.messageTextBox.TabIndex = 0;
+            this.messageTextBox.TabIndex = 1;
             // 
             // label2
             // 
